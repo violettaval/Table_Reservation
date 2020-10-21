@@ -64,5 +64,53 @@
     </footer>
 
   </div>
-
 </body>
+<script type="text/javascript">
+  function tableSeater() {
+    $.ajax({ url: "/api/tables", method: "GET" })
+      .then(function (tableReserved) {
+        for (var i = 0; i < tableReserved.length; i++) {
+          var tableList = $("#tableList");
+          var listItem = $("<li class='list-group-item mt-4'>");
+          listItem.append(
+            $("<h2>").text("Table #" + (i + 1)),
+            $("<hr>"),
+            $("<h2>").text("ID: " + tableReserved[i].customerID),
+            $("<h2>").text("Name: " + tableReserved[i].customerName),
+            $("<h2>").text("Email: " + tableReserved[i].customerEmail),
+            $("<h2>").text("Phone: " + tableReserved[i].phoneNumber)
+          );
+          waitList.append(listItem);
+        }
+      });
+  }
+  function waitLister(){
+    $.ajax({ url: "/api/waitlist", method: "GET" })
+      .then(function(waitingList) {
+        for (var i = 0; i < waitList.length; i++) {
+          var waitList = $("#waitList");
+          var listItem = $("<li class='list-group-item mt-4'>");
+            listItem.append(
+            $("<h2>").text("Table #" + (i + 1)),
+            $("<hr>"),
+            $("<h2>").text("ID: " + waitList[i].customerID),
+            $("<h2>").text("Name: " + waitList[i].customerName),
+            $("<h2>").text("Email: " + waitList[i].customerEmail),
+            $("<h2>").text("Phone: " + waitList[i].phoneNumber)
+          );
+          waitList.append(listItem);
+        }
+      });
+    }
+    function closeDownShop() {
+    alert("Clearing...");
+    $.ajax({ url: "/api/clear", method: "POST" }).then(function() {
+      $("#waitList").empty();
+      $("#tableList").empty();
+    });
+  }
+  $("#clear").on("click", closeDownShop);
+  tableSeater();
+  waitLister();
+</script>
+</html>
