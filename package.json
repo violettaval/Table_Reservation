@@ -1,0 +1,27 @@
+{
+  "name": "Table_Reservation",
+  "version": "1.0.0",
+  "description": "Code for a web server to hold reservations on a hosted server.",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/violettaval/Table_Reservation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/violettaval/Table_Reservation/issues"
+  },
+  "homepage": "https://github.com/violettaval/Table_Reservation#readme"
+}
